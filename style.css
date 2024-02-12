@@ -1,0 +1,56 @@
+.div{
+    border: 1px solid black;
+}
+
+.square{
+    width: 200px;
+    height: 200px;
+    background-color: blue;
+}
+.circle{
+    width: 200px;
+    height: 200px;
+    border-radius: 100%;
+    background-color: blue;
+}
+.rectangle{
+    width: 400px;
+    height: 200px;
+    background-color: blue;
+}
+
+.border{
+    border: 2px solid black;
+}
+.elm {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 10px;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 5px;
+    background-color: blueviolet;
+}
+div#main {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 10px;
+}
+.test {
+    color: white;
+    font-size: 50px;
+    margin: 0;
+}
+button {
+    background-color: burlywood;
+    border: navajowhite;
+    padding: 5px;
+    border-radius: 5px;
+}
+.elm input {
+    color: black;
+    background-color: transparent;
+    border: navajowhite;
+}
+
