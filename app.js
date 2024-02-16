@@ -114,7 +114,8 @@ function handleBorder() {
 }
 
 var prnt = document.getElementById("prnt");
-console.log(prnt);
+var creatElm = document.getElementById("create-element");
+// console.log(prnt);
 
 // var arr = [5, 10];
 // console.log(arr.some((elm) => elm == 10));
@@ -141,9 +142,12 @@ console.log(prnt);
 
 var main = document.getElementById("main");
 var inpt = document.getElementById("inpt");
+var deleteElm = document.getElementById("delete-elm");
 function handleCreateElement() {
   console.log(inpt.value);
   var inptVal = inpt.value;
+  inptVal = inptVal.trim();
+  inptVal = inptVal.replace(/\s+/g, " ");
   var div = document.createElement("div");
   div.className = "elm";
   div.setAttribute("id", Math.random().toFixed(4));
@@ -170,6 +174,10 @@ function handleCreateElement() {
   main.appendChild(div);
 
   inpt.value = null;
+  creatElm.disabled = true;
+  if (document.getElementById("main").childNodes.length > 0) {
+    deleteElm.disabled = false;
+  }
 }
 
 function handleDelAll() {
@@ -180,6 +188,10 @@ function handleDel(a) {
   console.log(a);
   console.log(a.parentNode);
   a.parentNode.remove();
+  if (document.getElementById("main").childNodes.length == 0) {
+    console.log("Chotay");
+    deleteElm.disabled = true;
+  }
 }
 function handleEdit(a) {
   a.disabled = true;
@@ -187,7 +199,7 @@ function handleEdit(a) {
   console.log(a.parentNode);
   console.log(a.parentNode.childNodes[2]);
   a.parentNode.childNodes[2].disabled = false;
-  a.parentNode.lastChild.value = "";
+  a.parentNode.lastChild.value = a.parentNode.lastChild.value;
   a.parentNode.lastChild.style.border = "1px solid white";
   a.parentNode.lastChild.style.backgroundColor = "white";
 }
@@ -200,4 +212,20 @@ function handleUpdate(a) {
   a.parentNode.lastChild.style.backgroundColor = "transparent";
   // console.log(a.parentNode.lastChild.value);
   a.parentNode.lastChild.value = a.parentNode.lastChild.value;
+}
+
+function handleChangeInput(elm) {
+  // var creatElm = document.getElementById("create-element");
+  console.log("elm");
+  console.log(elm.value);
+  console.log(elm.value[0]);
+  console.log(typeof elm.value[0]);
+  if (elm.value == null || elm.value == "" || elm.value.charAt(0) === " ") {
+    // elm.value.replace(/^\s+/, "");
+    elm.selectionStart = 0;
+    elm.selectionEnd = 0;
+    creatElm.disabled = true;
+  } else {
+    creatElm.disabled = false;
+  }
 }
