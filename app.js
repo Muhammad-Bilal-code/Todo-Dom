@@ -182,6 +182,10 @@ function handleCreateElement() {
 
 function handleDelAll() {
   main.innerHTML = "";
+  if (document.getElementById("main").childNodes.length == 0) {
+    // console.log("Chotay");
+    deleteElm.disabled = true;
+  }
 }
 
 function handleDel(a) {
@@ -189,7 +193,7 @@ function handleDel(a) {
   console.log(a.parentNode);
   a.parentNode.remove();
   if (document.getElementById("main").childNodes.length == 0) {
-    console.log("Chotay");
+    // console.log("Chotay");
     deleteElm.disabled = true;
   }
 }
